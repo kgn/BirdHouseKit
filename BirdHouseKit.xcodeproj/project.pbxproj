@@ -1,0 +1,256 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7395576E14ABAE12009D38FB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7395576D14ABAE12009D38FB /* Cocoa.framework */; };
+		7395577C14ABAE12009D38FB /* BirdHouseKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7395577B14ABAE12009D38FB /* BirdHouseKit.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7395576A14ABAE12009D38FB /* BirdHouseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BirdHouseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7395576D14ABAE12009D38FB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		7395577214ABAE12009D38FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7395577514ABAE12009D38FB /* BirdHouseKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BirdHouseKit-Info.plist"; sourceTree = "<group>"; };
+		7395577914ABAE12009D38FB /* BirdHouseKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BirdHouseKit-Prefix.pch"; sourceTree = "<group>"; };
+		7395577A14ABAE12009D38FB /* BirdHouseKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BirdHouseKit.h; sourceTree = "<group>"; };
+		7395577B14ABAE12009D38FB /* BirdHouseKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BirdHouseKit.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7395576614ABAE12009D38FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7395576E14ABAE12009D38FB /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7395575E14ABAE11009D38FB = {
+			isa = PBXGroup;
+			children = (
+				7395577314ABAE12009D38FB /* BirdHouseKit */,
+				7395576C14ABAE12009D38FB /* Frameworks */,
+				7395576B14ABAE12009D38FB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7395576B14ABAE12009D38FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7395576A14ABAE12009D38FB /* BirdHouseKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7395576C14ABAE12009D38FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7395576D14ABAE12009D38FB /* Cocoa.framework */,
+				7395577214ABAE12009D38FB /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7395577314ABAE12009D38FB /* BirdHouseKit */ = {
+			isa = PBXGroup;
+			children = (
+				7395577A14ABAE12009D38FB /* BirdHouseKit.h */,
+				7395577B14ABAE12009D38FB /* BirdHouseKit.m */,
+				7395577414ABAE12009D38FB /* Supporting Files */,
+			);
+			path = BirdHouseKit;
+			sourceTree = "<group>";
+		};
+		7395577414ABAE12009D38FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7395577514ABAE12009D38FB /* BirdHouseKit-Info.plist */,
+				7395577914ABAE12009D38FB /* BirdHouseKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7395576714ABAE12009D38FB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7395576914ABAE12009D38FB /* BirdHouseKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7395577F14ABAE12009D38FB /* Build configuration list for PBXNativeTarget "BirdHouseKit" */;
+			buildPhases = (
+				7395576514ABAE12009D38FB /* Sources */,
+				7395576614ABAE12009D38FB /* Frameworks */,
+				7395576714ABAE12009D38FB /* Headers */,
+				7395576814ABAE12009D38FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BirdHouseKit;
+			productName = BirdHouseKit;
+			productReference = 7395576A14ABAE12009D38FB /* BirdHouseKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7395576014ABAE11009D38FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "David Keegan";
+			};
+			buildConfigurationList = 7395576314ABAE11009D38FB /* Build configuration list for PBXProject "BirdHouseKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7395575E14ABAE11009D38FB;
+			productRefGroup = 7395576B14ABAE12009D38FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7395576914ABAE12009D38FB /* BirdHouseKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7395576814ABAE12009D38FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7395576514ABAE12009D38FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7395577C14ABAE12009D38FB /* BirdHouseKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7395577D14ABAE12009D38FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7395577E14ABAE12009D38FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7395578014ABAE12009D38FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BirdHouseKit/BirdHouseKit-Prefix.pch";
+				INFOPLIST_FILE = "BirdHouseKit/BirdHouseKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		7395578114ABAE12009D38FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BirdHouseKit/BirdHouseKit-Prefix.pch";
+				INFOPLIST_FILE = "BirdHouseKit/BirdHouseKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7395576314ABAE11009D38FB /* Build configuration list for PBXProject "BirdHouseKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7395577D14ABAE12009D38FB /* Debug */,
+				7395577E14ABAE12009D38FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7395577F14ABAE12009D38FB /* Build configuration list for PBXNativeTarget "BirdHouseKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7395578014ABAE12009D38FB /* Debug */,
+				7395578114ABAE12009D38FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7395576014ABAE11009D38FB /* Project object */;
+}
