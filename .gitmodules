@@ -1,0 +1,6 @@
+[submodule "AFOAuth1Client"]
+	path = AFOAuth1Client
+	url = https://github.com/kgn/AFOAuth1Client
+[submodule "JSONKit"]
+	path = JSONKit
+	url = https://github.com/johnezang/JSONKit.git

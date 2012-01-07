@@ -10,4 +10,14 @@
 
 @interface BirdHouseKit : NSObject
 
++ (id)kitWithConsumerKey:(NSString *)consumerKey andConsumerSecret:(NSString*)consumerSecret;
+- (id)initWithConsumerKey:(NSString *)consumerKey andConsumerSecret:(NSString*)consumerSecret;
+
+- (void)authenticateWithCallbackUrl:(NSURL *)callbackUrl;
+- (void)authenticateWithCallbackUrl:(NSURL *)callbackUrl 
+                            success:(void (^)())success 
+                            failure:(void (^)(NSError *))failure;
+
+- (void)setOAuthToken:(NSString *)oauthToken;
+
 @end
