@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BHUser.h"
+#import "BHTweet.h"
 
 @interface BirdHouseKit : NSObject
 
