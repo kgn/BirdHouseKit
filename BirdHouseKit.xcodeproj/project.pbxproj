@@ -50,6 +50,7 @@
 		73FD6FAE14B8F184005AF295 /* BHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FD6FA414B8F184005AF295 /* BHUser.m */; };
 		73FD6FB214B8F243005AF295 /* NSDictionary+KGJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 73FD6FB014B8F243005AF295 /* NSDictionary+KGJSON.h */; };
 		73FD6FB314B8F243005AF295 /* NSDictionary+KGJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FD6FB114B8F243005AF295 /* NSDictionary+KGJSON.m */; };
+		73FD6FC114B90F91005AF295 /* BirdHouseKit+Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 73FD6FBF14B90F91005AF295 /* BirdHouseKit+Twitter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		73FD6FA414B8F184005AF295 /* BHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHUser.m; sourceTree = "<group>"; };
 		73FD6FB014B8F243005AF295 /* NSDictionary+KGJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+KGJSON.h"; path = "../../KGLib/Shared/NSDictionary+KGJSON.h"; sourceTree = "<group>"; };
 		73FD6FB114B8F243005AF295 /* NSDictionary+KGJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+KGJSON.m"; path = "../../KGLib/Shared/NSDictionary+KGJSON.m"; sourceTree = "<group>"; };
+		73FD6FBF14B90F91005AF295 /* BirdHouseKit+Twitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BirdHouseKit+Twitter.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				7395577A14ABAE12009D38FB /* BirdHouseKit.h */,
 				7395577B14ABAE12009D38FB /* BirdHouseKit.m */,
+				73FD6FBF14B90F91005AF295 /* BirdHouseKit+Twitter.m */,
 				73FD6F9B14B8F184005AF295 /* BHTweet.h */,
 				73FD6F9C14B8F184005AF295 /* BHTweet.m */,
 				73FD6FA314B8F184005AF295 /* BHUser.h */,
@@ -338,6 +341,7 @@
 				73FD6FAC14B8F184005AF295 /* BHObject.m in Sources */,
 				73FD6FAE14B8F184005AF295 /* BHUser.m in Sources */,
 				73FD6FB314B8F243005AF295 /* NSDictionary+KGJSON.m in Sources */,
+				73FD6FC114B90F91005AF295 /* BirdHouseKit+Twitter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,3 +23,12 @@
 - (void)setOAuthToken:(NSString *)oauthToken;
 
 @end
+
+@interface BirdHouseKit(Twitter)
+
+typedef void (^BHSuccess)(NSArray *tweets);
+typedef void (^BHFailure)(NSError *error);
+
+- (void)requestPublicTimelineWithSuccess:(BHSuccess)success andFailure:(BHFailure)failure;
+
+@end
