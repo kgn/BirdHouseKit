@@ -33,9 +33,14 @@
 #import "BHTweet.h"
 #import "NSDictionary+KGJSON.h"
 
-//TODO: this c solution doesn't work with unicode
-//Rewrite with NSScanner
-static bool isValidUrlChar(char c){
+static unichar uc(NSString *string, NSUInteger charIndex){
+    if(charIndex < [string length]){
+        return [string characterAtIndex:charIndex];
+    }
+    return '\0';
+}
+
+static bool isValidUrlChar(unichar c){
     if(c=='\0' || isspace(c)){
         return false;
     }
@@ -45,43 +50,40 @@ static bool isValidUrlChar(char c){
     return true;
 }
 
-static bool isValidAccountOrHashChar(char c){
+static bool isValidAccountOrHashChar(unichar c){
     return (c != '\0' && (isalnum(c) || c=='_'));
 }
 
 static void styleTweet(NSMutableAttributedString *attributedString, NSDictionary *hashStyle, 
                        NSDictionary *accountStyle, NSDictionary *linkStyle){
     NSString *rawText = [attributedString string];
-    const char *t = [rawText UTF8String];
     
-    int i = 0;
-    char c = t[i];
+    NSUInteger i = 0;
+    unichar c = uc(rawText, i);
     while(c != '\0'){
         if(c == '#' || c == '@'){ // #hash or @account
-            int start = i;
-            while(isValidAccountOrHashChar(t[++i]));
+            NSUInteger start = i;
+            while(isValidAccountOrHashChar(uc(rawText, ++i)));
             NSRange range = NSMakeRange(start, i-start);
-            NSLog(@"%lu, %lu: %@", range.location, range.length, rawText);
             if(c == '#'){
                 [attributedString addAttributes:hashStyle range:range];
             }else{
-                [attributedString addAttributes:accountStyle range:range];                
+                [attributedString addAttributes:accountStyle range:range];
             }
-        }else if((c == 'h' && t[i+1] == 't' && t[i+2] == 't' && t[i+3] == 'p' && // http(s)://
-                 ((t[i+4] == ':' && t[i+5] == '/' && t[i+6] == '/') ||
-                  (t[i+4] == 's' && t[i+5] == ':' && t[i+6] == '/' && t[i+7] == '/'))) || 
-                 (c == 'f' && t[i+1] == 't' && t[i+2] == 'p' && // ftp(s)://
-                  ((t[i+3] == ':' && t[i+4] == '/' && t[i+5] == '/') ||
-                   (t[i+3] == 's' && t[i+4] == ':' && t[i+5] == '/' && t[i+6] == '/')))){
-             int start = i;
-             while(isValidUrlChar(t[++i]));
-             NSRange range = NSMakeRange(start, i-start);
-             NSLog(@"%lu, %lu: %@", range.location, range.length, rawText);
-             NSString *url = [rawText substringWithRange:range];
-             [attributedString addAttributes:linkStyle range:range];
-             [attributedString addAttribute:NSLinkAttributeName value:url range:range];
+        }else if((c == 'h' && uc(rawText, i+1) == 't' && uc(rawText, i+2) == 't' && uc(rawText, i+3) == 'p' && // http(s)://
+                 ((uc(rawText, i+4) == ':' && uc(rawText, i+5) == '/' && uc(rawText, i+6) == '/') ||
+                  (uc(rawText, i+4) == 's' && uc(rawText, i+5) == ':' && uc(rawText, i+6) == '/' && uc(rawText, i+7) == '/'))) || 
+                 (c == 'f' && uc(rawText, i+1) == 't' && uc(rawText, i+2) == 'p' && // ftp(s)://
+                  ((uc(rawText, i+3) == ':' && uc(rawText, i+4) == '/' && uc(rawText, i+5) == '/') ||
+                   (uc(rawText, i+3) == 's' && uc(rawText, i+4) == ':' && uc(rawText, i+5) == '/' && uc(rawText, i+6) == '/')))){
+            NSUInteger start = i;
+            while(isValidUrlChar(uc(rawText, ++i)));
+            NSRange range = NSMakeRange(start, i-start);
+            NSString *url = [rawText substringWithRange:range];
+            [attributedString addAttributes:linkStyle range:range];
+            [attributedString addAttribute:NSLinkAttributeName value:url range:range];
         }
-        c = t[++i];
+        c = uc(rawText, ++i);
     }
 }
 
@@ -111,20 +113,20 @@ static void styleTweet(NSMutableAttributedString *attributedString, NSDictionary
         
         static NSDictionary *hashStyle = nil;
         if(hashStyle == nil){
-            hashStyle = [NSDictionary dictionaryWithObject:[NSColor grayColor] 
-                                                    forKey:NSForegroundColorAttributeName];
+            hashStyle = [[NSDictionary dictionaryWithObject:[NSColor grayColor] 
+                                                     forKey:NSForegroundColorAttributeName] retain];
         }
         
         static NSDictionary *accountStyle = nil;
         if(accountStyle == nil){
-            accountStyle = [NSDictionary dictionaryWithObject:[NSColor greenColor] 
-                                                       forKey:NSForegroundColorAttributeName];
+            accountStyle = [[NSDictionary dictionaryWithObject:[NSColor redColor] 
+                                                        forKey:NSForegroundColorAttributeName] retain];
         }
         
         static NSDictionary *linkStyle = nil;
         if(linkStyle == nil){
-            linkStyle = [NSDictionary dictionaryWithObject:[NSColor blueColor] 
-                                                    forKey:NSForegroundColorAttributeName];
+            linkStyle = [[NSDictionary dictionaryWithObject:[NSColor blueColor] 
+                                                     forKey:NSForegroundColorAttributeName] retain];
         }
         
         styleTweet(attributedString, hashStyle, accountStyle, linkStyle);
