@@ -81,8 +81,8 @@ static void styleTweet(NSMutableAttributedString *attributedString){
             while(isValidUrlChar(uc(s, ++i)));
             NSRange range = NSMakeRange(start, i-start);
             NSString *url = [s substringWithRange:range];
+            [attributedString addAttribute:NSLinkAttributeName value:url range:range];                      
             [attributedString addAttributes:[[BHStyle sharedStyle] timelineLinkStyle] range:range];
-            [attributedString addAttribute:NSLinkAttributeName value:url range:range];
         }
         c = uc(s, ++i);
     }
@@ -97,11 +97,16 @@ static void styleTweet(NSMutableAttributedString *attributedString){
 
 - (NSAttributedString *)styledText{
     if(_styledText == nil){
-        NSLog(@"%@", self.text);
+        if(self.text == nil){
+            return nil;
+        }
         NSMutableAttributedString *attributedString = 
         [[NSMutableAttributedString alloc] initWithString:self.text 
                                                attributes:[[BHStyle sharedStyle] timelineDefaultStyle]];
+        [attributedString beginEditing];
         styleTweet(attributedString);
+        [attributedString endEditing];
+        
         _styledText = [[NSAttributedString alloc] initWithAttributedString:attributedString];
     }
     return _styledText;
