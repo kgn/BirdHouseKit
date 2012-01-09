@@ -32,6 +32,7 @@
 
 #import "BHTweet.h"
 #import "NSDictionary+KGJSON.h"
+#import "BHStyle.h"
 
 static unichar uc(NSString *string, NSUInteger charIndex){
     if(charIndex < [string length]){
@@ -54,36 +55,36 @@ static bool isValidAccountOrHashChar(unichar c){
     return (c != '\0' && (isalnum(c) || c=='_'));
 }
 
-static void styleTweet(NSMutableAttributedString *attributedString, NSDictionary *hashStyle, 
-                       NSDictionary *accountStyle, NSDictionary *linkStyle){
-    NSString *rawText = [attributedString string];
+static void styleTweet(NSMutableAttributedString *attributedString){
+    NSString *s = [attributedString string];
     
     NSUInteger i = 0;
-    unichar c = uc(rawText, i);
+    unichar c = uc(s, i);
     while(c != '\0'){
-        if(c == '#' || c == '@'){ // #hash or @account
+        if((c == '#' || c == '@') /*&& isspace(uc(rawText, i-1))*/ && // #hash or @account
+           isValidAccountOrHashChar(uc(s, i+1))){
             NSUInteger start = i;
-            while(isValidAccountOrHashChar(uc(rawText, ++i)));
+            while(isValidAccountOrHashChar(uc(s, ++i)));
             NSRange range = NSMakeRange(start, i-start);
             if(c == '#'){
-                [attributedString addAttributes:hashStyle range:range];
+                [attributedString addAttributes:[[BHStyle sharedStyle] timelineHashStyle] range:range];
             }else{
-                [attributedString addAttributes:accountStyle range:range];
+                [attributedString addAttributes:[[BHStyle sharedStyle] timelineAccountStyle] range:range];
             }
-        }else if((c == 'h' && uc(rawText, i+1) == 't' && uc(rawText, i+2) == 't' && uc(rawText, i+3) == 'p' && // http(s)://
-                 ((uc(rawText, i+4) == ':' && uc(rawText, i+5) == '/' && uc(rawText, i+6) == '/') ||
-                  (uc(rawText, i+4) == 's' && uc(rawText, i+5) == ':' && uc(rawText, i+6) == '/' && uc(rawText, i+7) == '/'))) || 
-                 (c == 'f' && uc(rawText, i+1) == 't' && uc(rawText, i+2) == 'p' && // ftp(s)://
-                  ((uc(rawText, i+3) == ':' && uc(rawText, i+4) == '/' && uc(rawText, i+5) == '/') ||
-                   (uc(rawText, i+3) == 's' && uc(rawText, i+4) == ':' && uc(rawText, i+5) == '/' && uc(rawText, i+6) == '/')))){
+        }else if((c == 'h' && uc(s, i+1) == 't' && uc(s, i+2) == 't' && uc(s, i+3) == 'p' && // http(s)://
+                 ((uc(s, i+4) == ':' && uc(s, i+5) == '/' && uc(s, i+6) == '/') ||
+                  (uc(s, i+4) == 's' && uc(s, i+5) == ':' && uc(s, i+6) == '/' && uc(s, i+7) == '/'))) || 
+                 (c == 'f' && uc(s, i+1) == 't' && uc(s, i+2) == 'p' && // ftp(s)://
+                  ((uc(s, i+3) == ':' && uc(s, i+4) == '/' && uc(s, i+5) == '/') ||
+                   (uc(s, i+3) == 's' && uc(s, i+4) == ':' && uc(s, i+5) == '/' && uc(s, i+6) == '/')))){
             NSUInteger start = i;
-            while(isValidUrlChar(uc(rawText, ++i)));
+            while(isValidUrlChar(uc(s, ++i)));
             NSRange range = NSMakeRange(start, i-start);
-            NSString *url = [rawText substringWithRange:range];
-            [attributedString addAttributes:linkStyle range:range];
+            NSString *url = [s substringWithRange:range];
+            [attributedString addAttributes:[[BHStyle sharedStyle] timelineLinkStyle] range:range];
             [attributedString addAttribute:NSLinkAttributeName value:url range:range];
         }
-        c = uc(rawText, ++i);
+        c = uc(s, ++i);
     }
 }
 
@@ -96,41 +97,11 @@ static void styleTweet(NSMutableAttributedString *attributedString, NSDictionary
 
 - (NSAttributedString *)styledText{
     if(_styledText == nil){
-        static NSDictionary *defaultStyle = nil;
-        if(defaultStyle == nil){
-            NSShadow *textShadow = nil;
-            textShadow = [[NSShadow alloc] init];
-            [textShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
-            [textShadow setShadowColor:[NSColor colorWithDeviceWhite:1.0f alpha:0.6f]];            
-            defaultStyle = [[NSDictionary alloc] initWithObjectsAndKeys:
-                            [NSColor blackColor], NSForegroundColorAttributeName,
-                            textShadow, NSShadowAttributeName, nil];
-            [textShadow release];
-        }
+        NSLog(@"%@", self.text);
         NSMutableAttributedString *attributedString = 
         [[NSMutableAttributedString alloc] initWithString:self.text 
-                                               attributes:defaultStyle];
-        
-        static NSDictionary *hashStyle = nil;
-        if(hashStyle == nil){
-            hashStyle = [[NSDictionary dictionaryWithObject:[NSColor grayColor] 
-                                                     forKey:NSForegroundColorAttributeName] retain];
-        }
-        
-        static NSDictionary *accountStyle = nil;
-        if(accountStyle == nil){
-            accountStyle = [[NSDictionary dictionaryWithObject:[NSColor redColor] 
-                                                        forKey:NSForegroundColorAttributeName] retain];
-        }
-        
-        static NSDictionary *linkStyle = nil;
-        if(linkStyle == nil){
-            linkStyle = [[NSDictionary dictionaryWithObject:[NSColor blueColor] 
-                                                     forKey:NSForegroundColorAttributeName] retain];
-        }
-        
-        styleTweet(attributedString, hashStyle, accountStyle, linkStyle);
-        
+                                               attributes:[[BHStyle sharedStyle] timelineDefaultStyle]];
+        styleTweet(attributedString);
         _styledText = [[NSAttributedString alloc] initWithAttributedString:attributedString];
     }
     return _styledText;
@@ -140,10 +111,21 @@ static void styleTweet(NSMutableAttributedString *attributedString, NSDictionary
     return [[[[self class] alloc] initWithDictionary:dictionary] autorelease];
 }
 
+- (NSString *)decodeString:(NSString *)inputString{
+    NSString *outputString = [NSString stringWithString:inputString];
+    outputString = [outputString stringByReplacingPercentEscapesUsingEncoding:NSUnicodeStringEncoding];
+    outputString = [outputString stringByReplacingOccurrencesOfString:@"&amp;"  withString:@"&"];
+    outputString = [outputString stringByReplacingOccurrencesOfString:@"&lt;"  withString:@"<"];
+    outputString = [outputString stringByReplacingOccurrencesOfString:@"&gt;"  withString:@">"];
+    outputString = [outputString stringByReplacingOccurrencesOfString:@"&quot;" withString:@"\""];
+    outputString = [outputString stringByReplacingOccurrencesOfString:@"&#039;"  withString:@"'"];
+    outputString = [outputString stringByReplacingOccurrencesOfString:@"<3"  withString:@"♥"];
+    return outputString;
+}
+
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super initWithDictionary:dictionary])){
-        _text = [[[dictionary stringSafelyFromKey:@"text"] 
-                  stringByReplacingPercentEscapesUsingEncoding:NSUnicodeStringEncoding] copy];
+        _text = [[self decodeString:[dictionary stringSafelyFromKey:@"text"]] copy];
         
         NSDictionary *user = [dictionary objectSafelyFromKey:@"user"];
         if(user != nil){
@@ -153,6 +135,12 @@ static void styleTweet(NSMutableAttributedString *attributedString, NSDictionary
         }
     }
     return self;
+}
+
+- (NSURL *)tweetUrl{
+    NSString *urlString = [NSString stringWithFormat:@"http://twitter.com/%@/status/%lu", 
+                           self.user.screenName, self.identifier];
+    return [NSURL URLWithString:urlString];
 }
 
 - (NSString *)description{

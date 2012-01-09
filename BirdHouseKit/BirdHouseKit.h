@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BHUser.h"
 #import "BHTweet.h"
+#import "BHStyle.h"
 
 @interface BirdHouseKit : NSObject
 

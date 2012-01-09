@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7335FFCB14BA7C7500802D28 /* BHStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7335FFC914BA7C7500802D28 /* BHStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7335FFCC14BA7C7500802D28 /* BHStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7335FFCA14BA7C7500802D28 /* BHStyle.m */; };
 		7395576E14ABAE12009D38FB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7395576D14ABAE12009D38FB /* Cocoa.framework */; };
 		7395577C14ABAE12009D38FB /* BirdHouseKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7395577B14ABAE12009D38FB /* BirdHouseKit.m */; };
 		739557A214ABAFE5009D38FB /* AFHTTPClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 7395578314ABAFE5009D38FB /* AFHTTPClient.h */; };
@@ -54,6 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7335FFC914BA7C7500802D28 /* BHStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHStyle.h; sourceTree = "<group>"; };
+		7335FFCA14BA7C7500802D28 /* BHStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHStyle.m; sourceTree = "<group>"; };
 		7395576A14ABAE12009D38FB /* BirdHouseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BirdHouseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7395576D14ABAE12009D38FB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		7395577214ABAE12009D38FB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -148,6 +152,8 @@
 				7395577A14ABAE12009D38FB /* BirdHouseKit.h */,
 				7395577B14ABAE12009D38FB /* BirdHouseKit.m */,
 				73FD6FBF14B90F91005AF295 /* BirdHouseKit+Twitter.m */,
+				7335FFC914BA7C7500802D28 /* BHStyle.h */,
+				7335FFCA14BA7C7500802D28 /* BHStyle.m */,
 				73FD6F9B14B8F184005AF295 /* BHTweet.h */,
 				73FD6F9C14B8F184005AF295 /* BHTweet.m */,
 				73FD6FA314B8F184005AF295 /* BHUser.h */,
@@ -238,6 +244,7 @@
 				73FD6FA514B8F184005AF295 /* BHTweet.h in Headers */,
 				73FD6FAD14B8F184005AF295 /* BHUser.h in Headers */,
 				73FD6FAB14B8F184005AF295 /* BHObject.h in Headers */,
+				7335FFCB14BA7C7500802D28 /* BHStyle.h in Headers */,
 				739557B014ABAFE5009D38FB /* AFOAuth1Client.h in Headers */,
 				739557A214ABAFE5009D38FB /* AFHTTPClient.h in Headers */,
 				739557A414ABAFE5009D38FB /* AFHTTPRequestOperation.h in Headers */,
@@ -342,6 +349,7 @@
 				73FD6FAE14B8F184005AF295 /* BHUser.m in Sources */,
 				73FD6FB314B8F243005AF295 /* NSDictionary+KGJSON.m in Sources */,
 				73FD6FC114B90F91005AF295 /* BirdHouseKit+Twitter.m in Sources */,
+				7335FFCC14BA7C7500802D28 /* BHStyle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

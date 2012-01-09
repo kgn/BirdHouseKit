@@ -17,4 +17,6 @@
 
 + (id)tweetWithDictionary:(NSDictionary *)dictionary;
 
+- (NSURL *)tweetUrl;
+
 @end
