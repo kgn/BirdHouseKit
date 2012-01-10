@@ -34,6 +34,18 @@
 #import "NSDictionary+KGJSON.h"
 #import "BHStyle.h"
 
+static bool uisalnum(unichar c){
+    return [[NSCharacterSet alphanumericCharacterSet] characterIsMember:c];
+}
+
+static bool uispunct(unichar c){
+    return [[NSCharacterSet punctuationCharacterSet] characterIsMember:c];
+}
+
+static bool uisspace(unichar c){
+    return [[NSCharacterSet whitespaceAndNewlineCharacterSet] characterIsMember:c];
+}
+
 static unichar uc(NSString *string, NSUInteger charIndex){
     if(charIndex < [string length]){
         return [string characterAtIndex:charIndex];
@@ -42,17 +54,17 @@ static unichar uc(NSString *string, NSUInteger charIndex){
 }
 
 static bool isValidUrlChar(unichar c){
-    if(c=='\0' || isspace(c)){
+    if(c=='\0' || uisspace(c)){
         return false;
     }
-    if(ispunct(c) && c!='.' && c!='?' && c!=':' && c!='/'){
+    if(uispunct(c) && c!='.' && c!='?' && c!=':' && c!='/'){
         return false;
     }
     return true;
 }
 
 static bool isValidAccountOrHashChar(unichar c){
-    return (c != '\0' && (isalnum(c) || c=='_'));
+    return (c != '\0' && (uisalnum(c) || c=='_'));
 }
 
 static void styleTweet(NSMutableAttributedString *attributedString){
