@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		732A256014BC0BA2008175E9 /* BHParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 732A255E14BC0BA2008175E9 /* BHParse.h */; };
 		7335FFCB14BA7C7500802D28 /* BHStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7335FFC914BA7C7500802D28 /* BHStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7335FFCC14BA7C7500802D28 /* BHStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7335FFCA14BA7C7500802D28 /* BHStyle.m */; };
 		7395576E14ABAE12009D38FB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7395576D14ABAE12009D38FB /* Cocoa.framework */; };
@@ -56,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		732A255E14BC0BA2008175E9 /* BHParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHParse.h; sourceTree = "<group>"; };
 		7335FFC914BA7C7500802D28 /* BHStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHStyle.h; sourceTree = "<group>"; };
 		7335FFCA14BA7C7500802D28 /* BHStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHStyle.m; sourceTree = "<group>"; };
 		7395576A14ABAE12009D38FB /* BirdHouseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BirdHouseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 				73FD6FA414B8F184005AF295 /* BHUser.m */,
 				73FD6FA114B8F184005AF295 /* BHObject.h */,
 				73FD6FA214B8F184005AF295 /* BHObject.m */,
+				732A255E14BC0BA2008175E9 /* BHParse.h */,
 				73FD6FB014B8F243005AF295 /* NSDictionary+KGJSON.h */,
 				73FD6FB114B8F243005AF295 /* NSDictionary+KGJSON.m */,
 				73D38DDF14ABB14700BD8E97 /* JSONKit */,
@@ -263,6 +266,7 @@
 				739557BE14ABAFE5009D38FB /* UIImageView+AFNetworking.h in Headers */,
 				73D38DE514ABB14700BD8E97 /* JSONKit.h in Headers */,
 				73FD6FB214B8F243005AF295 /* NSDictionary+KGJSON.h in Headers */,
+				732A256014BC0BA2008175E9 /* BHParse.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
