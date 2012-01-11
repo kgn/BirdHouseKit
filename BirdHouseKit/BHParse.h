@@ -51,13 +51,13 @@ static void styleTweet(NSMutableAttributedString *attributedString){
             NSUInteger start = i;
             while(isValidUserOrHashChar(uc(s, ++i)));
             NSRange range = NSMakeRange(start, i-start);
-            NSString *string = [s substringWithRange:range];
+            NSString *string = [s substringWithRange:NSMakeRange(range.location+1, range.length-1)];
             if(c == '#'){
                 [attributedString addAttribute:BHHashAttributeName value:string range:range];  
-                [attributedString addAttributes:[[BHStyle sharedStyle] timelineHashStyle] range:range];
+                [attributedString addAttributes:[[BHStyle sharedStyle] timelineHashStyle] range:range];                
             }else{
                 [attributedString addAttribute:BHUserAttributeName value:string range:range];  
-                [attributedString addAttributes:[[BHStyle sharedStyle] timelineUserStyle] range:range];
+                [attributedString addAttributes:[[BHStyle sharedStyle] timelineUserStyle] range:range];                                
             }
         }else if((c == 'h' && uc(s, i+1) == 't' && uc(s, i+2) == 't' && uc(s, i+3) == 'p' && // http(s)://
                   ((uc(s, i+4) == ':' && uc(s, i+5) == '/' && uc(s, i+6) == '/') ||
@@ -68,8 +68,8 @@ static void styleTweet(NSMutableAttributedString *attributedString){
                       NSUInteger start = i;
                       while(isValidUrlChar(uc(s, ++i)));
                       NSRange range = NSMakeRange(start, i-start);
-                      NSString *string = [s substringWithRange:range];
-                      [attributedString addAttribute:BHLinkAttributeName value:string range:range];                      
+                      NSString *url = [s substringWithRange:range];
+                      [attributedString addAttribute:BHLinkAttributeName value:url range:range];                      
                       [attributedString addAttributes:[[BHStyle sharedStyle] timelineLinkStyle] range:range];
                   }
         c = uc(s, ++i);
