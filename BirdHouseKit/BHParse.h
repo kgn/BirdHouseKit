@@ -37,7 +37,7 @@ static bool isValidUrlChar(unichar c){
     return true;
 }
 
-static bool isValidAccountOrHashChar(unichar c){
+static bool isValidUserOrHashChar(unichar c){
     return (c != '\0' && (uisalnum(c) || c=='_'));
 }
 
@@ -46,15 +46,18 @@ static void styleTweet(NSMutableAttributedString *attributedString){
     NSUInteger i = 0;
     unichar c = uc(s, i);
     while(c != '\0'){
-        if((c == '#' || c == '@') && !uisalnum(uc(s, i-1)) && // #hash or @account
-           isValidAccountOrHashChar(uc(s, i+1))){
+        if((c == '#' || c == '@') && !uisalnum(uc(s, i-1)) && // #hash or @user
+           isValidUserOrHashChar(uc(s, i+1))){
             NSUInteger start = i;
-            while(isValidAccountOrHashChar(uc(s, ++i)));
+            while(isValidUserOrHashChar(uc(s, ++i)));
             NSRange range = NSMakeRange(start, i-start);
+            NSString *string = [s substringWithRange:range];
             if(c == '#'){
+                [attributedString addAttribute:BHHashAttributeName value:string range:range];  
                 [attributedString addAttributes:[[BHStyle sharedStyle] timelineHashStyle] range:range];
             }else{
-                [attributedString addAttributes:[[BHStyle sharedStyle] timelineAccountStyle] range:range];
+                [attributedString addAttribute:BHUserAttributeName value:string range:range];  
+                [attributedString addAttributes:[[BHStyle sharedStyle] timelineUserStyle] range:range];
             }
         }else if((c == 'h' && uc(s, i+1) == 't' && uc(s, i+2) == 't' && uc(s, i+3) == 'p' && // http(s)://
                   ((uc(s, i+4) == ':' && uc(s, i+5) == '/' && uc(s, i+6) == '/') ||
@@ -65,8 +68,8 @@ static void styleTweet(NSMutableAttributedString *attributedString){
                       NSUInteger start = i;
                       while(isValidUrlChar(uc(s, ++i)));
                       NSRange range = NSMakeRange(start, i-start);
-                      NSString *url = [s substringWithRange:range];
-                      [attributedString addAttribute:NSLinkAttributeName value:url range:range];                      
+                      NSString *string = [s substringWithRange:range];
+                      [attributedString addAttribute:BHLinkAttributeName value:string range:range];                      
                       [attributedString addAttributes:[[BHStyle sharedStyle] timelineLinkStyle] range:range];
                   }
         c = uc(s, ++i);

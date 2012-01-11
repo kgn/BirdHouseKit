@@ -12,13 +12,13 @@
 
 @synthesize timelineDefaultStyle = _timelineDefaultStyle;
 @synthesize timelineHashStyle = _timelineHashStyle;
-@synthesize timelineAccountStyle = _timelineAccountStyle;
+@synthesize timelineUserStyle = _timelineUserStyle;
 @synthesize timelineLinkStyle = _timelineLinkStyle;
 
-+ (id)sharedStyle{
++ (BHStyle *)sharedStyle{
     static BHStyle *sharedStyle = nil;
     if(sharedStyle == nil){
-        sharedStyle = [[[self class] alloc] init];
+        sharedStyle = [[BHStyle alloc] init];
     }
     return sharedStyle;
 }
@@ -36,8 +36,8 @@
         
         self.timelineHashStyle = [[NSDictionary dictionaryWithObject:[NSColor grayColor] 
                                                               forKey:NSForegroundColorAttributeName] retain];
-        self.timelineAccountStyle = [NSDictionary dictionaryWithObject:[NSColor redColor] 
-                                                                forKey:NSForegroundColorAttributeName];
+        self.timelineUserStyle = [NSDictionary dictionaryWithObject:[NSColor redColor] 
+                                                             forKey:NSForegroundColorAttributeName];
         self.timelineLinkStyle = [NSDictionary dictionaryWithObject:[NSColor blueColor] 
                                                              forKey:NSForegroundColorAttributeName];
     }
@@ -47,7 +47,7 @@
 - (void)dealloc{
     [_timelineDefaultStyle release];
     [_timelineHashStyle release];
-    [_timelineAccountStyle release];
+    [_timelineUserStyle release];
     [_timelineLinkStyle release];
     [super dealloc];
 }

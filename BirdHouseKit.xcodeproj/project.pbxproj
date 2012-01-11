@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730A766314BD62A500FDBE20 /* BHTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 730A766114BD62A500FDBE20 /* BHTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		730A766414BD62A500FDBE20 /* BHTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 730A766214BD62A500FDBE20 /* BHTextView.m */; };
 		732A256014BC0BA2008175E9 /* BHParse.h in Headers */ = {isa = PBXBuildFile; fileRef = 732A255E14BC0BA2008175E9 /* BHParse.h */; };
 		7335FFCB14BA7C7500802D28 /* BHStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 7335FFC914BA7C7500802D28 /* BHStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7335FFCC14BA7C7500802D28 /* BHStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7335FFCA14BA7C7500802D28 /* BHStyle.m */; };
@@ -57,6 +59,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		730A766114BD62A500FDBE20 /* BHTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHTextView.h; sourceTree = "<group>"; };
+		730A766214BD62A500FDBE20 /* BHTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHTextView.m; sourceTree = "<group>"; };
 		732A255E14BC0BA2008175E9 /* BHParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHParse.h; sourceTree = "<group>"; };
 		7335FFC914BA7C7500802D28 /* BHStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHStyle.h; sourceTree = "<group>"; };
 		7335FFCA14BA7C7500802D28 /* BHStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHStyle.m; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				73FD6FA114B8F184005AF295 /* BHObject.h */,
 				73FD6FA214B8F184005AF295 /* BHObject.m */,
 				732A255E14BC0BA2008175E9 /* BHParse.h */,
+				730A766114BD62A500FDBE20 /* BHTextView.h */,
+				730A766214BD62A500FDBE20 /* BHTextView.m */,
 				73FD6FB014B8F243005AF295 /* NSDictionary+KGJSON.h */,
 				73FD6FB114B8F243005AF295 /* NSDictionary+KGJSON.m */,
 				73D38DDF14ABB14700BD8E97 /* JSONKit */,
@@ -248,6 +254,7 @@
 				73FD6FAD14B8F184005AF295 /* BHUser.h in Headers */,
 				73FD6FAB14B8F184005AF295 /* BHObject.h in Headers */,
 				7335FFCB14BA7C7500802D28 /* BHStyle.h in Headers */,
+				730A766314BD62A500FDBE20 /* BHTextView.h in Headers */,
 				739557B014ABAFE5009D38FB /* AFOAuth1Client.h in Headers */,
 				739557A214ABAFE5009D38FB /* AFHTTPClient.h in Headers */,
 				739557A414ABAFE5009D38FB /* AFHTTPRequestOperation.h in Headers */,
@@ -354,6 +361,7 @@
 				73FD6FB314B8F243005AF295 /* NSDictionary+KGJSON.m in Sources */,
 				73FD6FC114B90F91005AF295 /* BirdHouseKit+Twitter.m in Sources */,
 				7335FFCC14BA7C7500802D28 /* BHStyle.m in Sources */,
+				730A766414BD62A500FDBE20 /* BHTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

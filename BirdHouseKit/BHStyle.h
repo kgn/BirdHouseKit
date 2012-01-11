@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#define BHLinkAttributeName @"BHLinkAttributeName"
+#define BHHashAttributeName @"BHHashAttributeName"
+#define BHUserAttributeName @"BHUserAttributeName"
+
 @interface BHStyle : NSObject
 
 @property (retain) NSDictionary *timelineDefaultStyle;
 @property (retain) NSDictionary *timelineHashStyle;
-@property (retain) NSDictionary *timelineAccountStyle;
+@property (retain) NSDictionary *timelineUserStyle;
 @property (retain) NSDictionary *timelineLinkStyle;
 
-+ (id)sharedStyle;
++ (BHStyle *)sharedStyle;
 
 @end
