@@ -53,6 +53,7 @@
         [attributedString endEditing];
         
         _styledText = [[NSAttributedString alloc] initWithAttributedString:attributedString];
+        [attributedString release];
     }
     return _styledText;
 }

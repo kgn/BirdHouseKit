@@ -29,13 +29,13 @@
         textShadow = [[NSShadow alloc] init];
         [textShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
         [textShadow setShadowColor:[NSColor colorWithDeviceWhite:1.0f alpha:0.6f]];            
-        self.timelineDefaultStyle = [[NSDictionary alloc] initWithObjectsAndKeys:
+        self.timelineDefaultStyle = [[[NSDictionary alloc] initWithObjectsAndKeys:
                                      [NSColor blackColor], NSForegroundColorAttributeName,
-                                     textShadow, NSShadowAttributeName, nil];
+                                     textShadow, NSShadowAttributeName, nil] autorelease];
         [textShadow release];
         
-        self.timelineHashStyle = [[NSDictionary dictionaryWithObject:[NSColor grayColor] 
-                                                              forKey:NSForegroundColorAttributeName] retain];
+        self.timelineHashStyle = [NSDictionary dictionaryWithObject:[NSColor grayColor] 
+                                                             forKey:NSForegroundColorAttributeName];
         self.timelineUserStyle = [NSDictionary dictionaryWithObject:[NSColor redColor] 
                                                              forKey:NSForegroundColorAttributeName];
         self.timelineLinkStyle = [NSDictionary dictionaryWithObject:[NSColor blueColor] 
