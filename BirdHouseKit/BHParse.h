@@ -38,7 +38,7 @@ static bool isValidUrlChar(unichar c){
 }
 
 static bool isValidUserOrHashChar(unichar c){
-    return (c != '\0' && (uisalnum(c) || c=='_'));
+    return (c!='\0' && (uisalnum(c) || c=='_'));
 }
 
 static void styleTweet(NSMutableAttributedString *attributedString){

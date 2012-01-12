@@ -63,7 +63,7 @@
     [self setSelectable:YES];
 }
 
-// TIP: use a subclassed NSView in Interface Builder so the scrollbars arn't created
+// TIP: subclass NSView in Interface Builder so the scrollbars arn't created
 - (id)initWithCoder:(NSCoder *)coder{
     if((self = [super initWithCoder:coder])){
         [self setup];
