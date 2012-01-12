@@ -46,6 +46,15 @@
     return [_tweets count];
 }
 
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
+    CGFloat width = NSWidth(tableView.frame);
+    BHTweet *tweet = [_tweets objectAtIndex:row];
+    NSRect textRect = [tweet.styledText
+                       boundingRectWithSize:NSMakeSize(width, 0.0f) 
+                       options:NSStringDrawingUsesLineFragmentOrigin];    
+    return NSHeight(textRect)+35.0f;
+}
+
 - (BMTableCellView *)tableView:(NSTableView *)tableView 
             viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     BMTableCellView *view = [tableView makeViewWithIdentifier:@"TweetCell" owner:self];
