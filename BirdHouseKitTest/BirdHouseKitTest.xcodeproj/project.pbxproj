@@ -307,6 +307,7 @@
 				73213ACA14BECC9700611613 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
