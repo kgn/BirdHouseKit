@@ -93,7 +93,7 @@
 - (void)mouseDown:(NSEvent *)theEvent{
 	NSPoint point = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	NSInteger charIndex = [self characterIndexForInsertionAtPoint:point];
-	if(NSLocationInRange(charIndex, NSMakeRange(0, [[self string] length])) == YES){
+	if(charIndex < [[self string] length]){
 		NSDictionary *attributes = [[self attributedString] attributesAtIndex:charIndex effectiveRange:NULL];
 		if([attributes objectForKey:BHLinkAttributeName] != nil){
             BHTextViewAction linkAction = [[BHTextView sharedActions] linkAction];
@@ -109,6 +109,16 @@
 	
 	[super mouseDown:theEvent];
 }
+
+//- (NSView *)hitTest:(NSPoint)aPoint{
+////	NSPoint point = [self convertPoint:aPoint fromView:nil];
+//	NSInteger charIndex = [self characterIndexForInsertionAtPoint:aPoint];
+//    if(charIndex < [[self string] length]){
+//        NSLog(@"in range");
+//        return self;
+//    }
+//    return nil;
+//}
 
 + (BHTextViewActions *)sharedActions{
     static BHTextViewActions *sharedActions = nil;

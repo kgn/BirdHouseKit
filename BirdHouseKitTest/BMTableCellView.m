@@ -10,4 +10,6 @@
 
 @implementation BMTableCellView
 
+@synthesize textView = _textView;
+
 @end

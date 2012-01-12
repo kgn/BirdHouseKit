@@ -8,27 +8,57 @@
 
 /* Begin PBXBuildFile section */
 		73213AAF14BECC9700611613 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73213AAE14BECC9700611613 /* Cocoa.framework */; };
-		73213AB914BECC9700611613 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73213AB714BECC9700611613 /* InfoPlist.strings */; };
-		73213ABB14BECC9700611613 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73213ABA14BECC9700611613 /* main.m */; };
-		73213ABF14BECC9700611613 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 73213ABD14BECC9700611613 /* Credits.rtf */; };
-		73213AC214BECC9700611613 /* BMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73213AC114BECC9700611613 /* BMAppDelegate.m */; };
-		73213AC514BECC9700611613 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73213AC314BECC9700611613 /* MainMenu.xib */; };
+		73213ACC14BECD5E00611613 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 73213ACB14BECD5E00611613 /* main.m */; };
+		73213ACF14BECD6700611613 /* BMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 73213ACE14BECD6700611613 /* BMAppDelegate.m */; };
+		73213AD214BECD7000611613 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73213AD014BECD7000611613 /* MainMenu.xib */; };
+		73213ADE14BECED600611613 /* BirdHouseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73213ADB14BECEC200611613 /* BirdHouseKit.framework */; };
+		73213AE014BECF1C00611613 /* BirdHouseKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 73213ADB14BECEC200611613 /* BirdHouseKit.framework */; };
+		73213AE814BED04200611613 /* BMTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73213AE714BED04200611613 /* BMTableCellView.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		73213ADA14BECEC200611613 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 73213AD314BECEC200611613 /* BirdHouseKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7395576A14ABAE12009D38FB;
+			remoteInfo = BirdHouseKit;
+		};
+		73213ADC14BECECE00611613 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 73213AD314BECEC200611613 /* BirdHouseKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7395576914ABAE12009D38FB;
+			remoteInfo = BirdHouseKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		73213ADF14BECEDA00611613 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				73213AE014BECF1C00611613 /* BirdHouseKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		73213AAA14BECC9700611613 /* BirdHouseKitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BirdHouseKitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73213AAE14BECC9700611613 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		73213AB114BECC9700611613 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		73213AB214BECC9700611613 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		73213AB314BECC9700611613 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		73213AB614BECC9700611613 /* BirdHouseKitTest-Info.plist */ = {isa = PBXFileReference; path = "BirdHouseKitTest-Info.plist"; sourceTree = "<group>"; };
-		73213AB814BECC9700611613 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		73213ABA14BECC9700611613 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		73213ABC14BECC9700611613 /* BirdHouseKitTest-Prefix.pch */ = {isa = PBXFileReference; path = "BirdHouseKitTest-Prefix.pch"; sourceTree = "<group>"; };
-		73213ABE14BECC9700611613 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		73213AC014BECC9700611613 /* BMAppDelegate.h */ = {isa = PBXFileReference; path = BMAppDelegate.h; sourceTree = "<group>"; };
-		73213AC114BECC9700611613 /* BMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMAppDelegate.m; sourceTree = "<group>"; };
-		73213AC414BECC9700611613 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		73213ACB14BECD5E00611613 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		73213ACD14BECD6700611613 /* BMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAppDelegate.h; sourceTree = "<group>"; };
+		73213ACE14BECD6700611613 /* BMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAppDelegate.m; sourceTree = "<group>"; };
+		73213AD114BECD7000611613 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		73213AD314BECEC200611613 /* BirdHouseKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BirdHouseKit.xcodeproj; path = ../BirdHouseKit.xcodeproj; sourceTree = "<group>"; };
+		73213AE614BED04200611613 /* BMTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMTableCellView.h; sourceTree = "<group>"; };
+		73213AE714BED04200611613 /* BMTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMTableCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73213ADE14BECED600611613 /* BirdHouseKit.framework in Frameworks */,
 				73213AAF14BECC9700611613 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,7 +77,13 @@
 		73213A9F14BECC9600611613 = {
 			isa = PBXGroup;
 			children = (
-				73213AB414BECC9700611613 /* BirdHouseKitTest */,
+				73213AD314BECEC200611613 /* BirdHouseKit.xcodeproj */,
+				73213ACB14BECD5E00611613 /* main.m */,
+				73213ACD14BECD6700611613 /* BMAppDelegate.h */,
+				73213ACE14BECD6700611613 /* BMAppDelegate.m */,
+				73213AE614BED04200611613 /* BMTableCellView.h */,
+				73213AE714BED04200611613 /* BMTableCellView.m */,
+				73213AD014BECD7000611613 /* MainMenu.xib */,
 				73213AAD14BECC9700611613 /* Frameworks */,
 				73213AAB14BECC9700611613 /* Products */,
 			);
@@ -63,43 +100,19 @@
 		73213AAD14BECC9700611613 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73213AB114BECC9700611613 /* AppKit.framework */,
+				73213AB314BECC9700611613 /* Foundation.framework */,
 				73213AAE14BECC9700611613 /* Cocoa.framework */,
-				73213AB014BECC9700611613 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		73213AB014BECC9700611613 /* Other Frameworks */ = {
+		73213AD414BECEC200611613 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				73213AB114BECC9700611613 /* AppKit.framework */,
-				73213AB214BECC9700611613 /* CoreData.framework */,
-				73213AB314BECC9700611613 /* Foundation.framework */,
+				73213ADB14BECEC200611613 /* BirdHouseKit.framework */,
 			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		73213AB414BECC9700611613 /* BirdHouseKitTest */ = {
-			isa = PBXGroup;
-			children = (
-				73213AC014BECC9700611613 /* BMAppDelegate.h */,
-				73213AC114BECC9700611613 /* BMAppDelegate.m */,
-				73213AC314BECC9700611613 /* MainMenu.xib */,
-				73213AB514BECC9700611613 /* Supporting Files */,
-			);
-			path = BirdHouseKitTest;
-			sourceTree = "<group>";
-		};
-		73213AB514BECC9700611613 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				73213AB614BECC9700611613 /* BirdHouseKitTest-Info.plist */,
-				73213AB714BECC9700611613 /* InfoPlist.strings */,
-				73213ABA14BECC9700611613 /* main.m */,
-				73213ABC14BECC9700611613 /* BirdHouseKitTest-Prefix.pch */,
-				73213ABD14BECC9700611613 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,10 +125,12 @@
 				73213AA614BECC9700611613 /* Sources */,
 				73213AA714BECC9700611613 /* Frameworks */,
 				73213AA814BECC9700611613 /* Resources */,
+				73213ADF14BECEDA00611613 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				73213ADD14BECECE00611613 /* PBXTargetDependency */,
 			);
 			name = BirdHouseKitTest;
 			productName = BirdHouseKitTest;
@@ -129,6 +144,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "David Keegan";
 			};
 			buildConfigurationList = 73213AA414BECC9600611613 /* Build configuration list for PBXProject "BirdHouseKitTest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -140,6 +156,12 @@
 			mainGroup = 73213A9F14BECC9600611613;
 			productRefGroup = 73213AAB14BECC9700611613 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 73213AD414BECEC200611613 /* Products */;
+					ProjectRef = 73213AD314BECEC200611613 /* BirdHouseKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				73213AA914BECC9700611613 /* BirdHouseKitTest */,
@@ -147,14 +169,22 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		73213ADB14BECEC200611613 /* BirdHouseKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BirdHouseKit.framework;
+			remoteRef = 73213ADA14BECEC200611613 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		73213AA814BECC9700611613 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73213AB914BECC9700611613 /* InfoPlist.strings in Resources */,
-				73213ABF14BECC9700611613 /* Credits.rtf in Resources */,
-				73213AC514BECC9700611613 /* MainMenu.xib in Resources */,
+				73213AD214BECD7000611613 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,34 +195,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73213ABB14BECC9700611613 /* main.m in Sources */,
-				73213AC214BECC9700611613 /* BMAppDelegate.m in Sources */,
+				73213ACC14BECD5E00611613 /* main.m in Sources */,
+				73213ACF14BECD6700611613 /* BMAppDelegate.m in Sources */,
+				73213AE814BED04200611613 /* BMTableCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		73213ADD14BECECE00611613 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BirdHouseKit;
+			targetProxy = 73213ADC14BECECE00611613 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
-		73213AB714BECC9700611613 /* InfoPlist.strings */ = {
+		73213AD014BECD7000611613 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				73213AB814BECC9700611613 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		73213ABD14BECC9700611613 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73213ABE14BECC9700611613 /* en */,
-			);
-			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		73213AC314BECC9700611613 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				73213AC414BECC9700611613 /* en */,
+				73213AD114BECD7000611613 /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -250,9 +273,7 @@
 		73213AC914BECC9700611613 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BirdHouseKitTest/BirdHouseKitTest-Prefix.pch";
-				INFOPLIST_FILE = "BirdHouseKitTest/BirdHouseKitTest-Info.plist";
+				INFOPLIST_FILE = "BirdHouseKitTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -261,9 +282,7 @@
 		73213ACA14BECC9700611613 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BirdHouseKitTest/BirdHouseKitTest-Prefix.pch";
-				INFOPLIST_FILE = "BirdHouseKitTest/BirdHouseKitTest-Info.plist";
+				INFOPLIST_FILE = "BirdHouseKitTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

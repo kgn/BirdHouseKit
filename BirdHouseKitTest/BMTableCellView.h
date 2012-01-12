@@ -7,7 +7,10 @@
 //
 
 #import <AppKit/AppKit.h>
+#import <BirdHouseKit/BirdHouseKit.h>
 
 @interface BMTableCellView : NSTableCellView
+
+@property (strong, nonatomic) IBOutlet BHTextView *textView;
 
 @end
