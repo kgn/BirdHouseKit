@@ -25,21 +25,21 @@
 
 - (id)init {
     if((self = [super init])){
-        NSShadow *textShadow = nil;
-        textShadow = [[NSShadow alloc] init];
-        [textShadow setShadowOffset:NSMakeSize(0.0f, -1.0f)];
-        [textShadow setShadowColor:[NSColor colorWithDeviceWhite:1.0f alpha:0.6f]];            
         self.timelineDefaultStyle = [[[NSDictionary alloc] initWithObjectsAndKeys:
                                      [NSColor blackColor], NSForegroundColorAttributeName,
-                                     textShadow, NSShadowAttributeName, nil] autorelease];
-        [textShadow release];
-        
-        self.timelineHashStyle = [NSDictionary dictionaryWithObject:[NSColor grayColor] 
-                                                             forKey:NSForegroundColorAttributeName];
-        self.timelineUserStyle = [NSDictionary dictionaryWithObject:[NSColor redColor] 
-                                                             forKey:NSForegroundColorAttributeName];
-        self.timelineLinkStyle = [NSDictionary dictionaryWithObject:[NSColor blueColor] 
-                                                             forKey:NSForegroundColorAttributeName];
+                                      nil] autorelease];
+        self.timelineHashStyle = [[[NSDictionary alloc] initWithObjectsAndKeys:
+                                   [NSColor grayColor], NSForegroundColorAttributeName,
+                                   [NSCursor pointingHandCursor], NSCursorAttributeName,
+                                   nil] autorelease];
+        self.timelineUserStyle = [[[NSDictionary alloc] initWithObjectsAndKeys:
+                                   [NSColor redColor], NSForegroundColorAttributeName,
+                                   [NSCursor pointingHandCursor], NSCursorAttributeName,
+                                   nil] autorelease];
+        self.timelineLinkStyle = [[[NSDictionary alloc] initWithObjectsAndKeys:
+                                   [NSColor blueColor], NSForegroundColorAttributeName,
+                                   [NSCursor pointingHandCursor], NSCursorAttributeName,
+                                   nil] autorelease];
     }
     return self;
 }
