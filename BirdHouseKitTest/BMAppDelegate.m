@@ -10,15 +10,30 @@
 #import <BirdHouseKit/BirdHouseKit.h>
 #import "BMTableCellView.h"
 
+@interface BMAppDelegate()
+- (void)updateTableCellViewHeights;
+@end
+
 @implementation BMAppDelegate{
     NSArray *_tweets;
+    BirdHouseKit *_birdhouse;    
 }
 
 @synthesize window = _window;
 @synthesize tweetTable = _tweetTable;
 
+- (void)updateTableCellViewHeights{
+    [NSAnimationContext beginGrouping];
+    [[NSAnimationContext currentContext] setDuration:0];
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [_tweets count])];
+    [self.tweetTable noteHeightOfRowsWithIndexesChanged:indexSet];
+    [NSAnimationContext endGrouping];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification{
-    BirdHouseKit *birdhouse = [BirdHouseKit kitWithConsumerKey:nil andConsumerSecret:nil];
+    [[NSNotificationCenter defaultCenter] 
+     addObserver:self selector:@selector(updateTableCellViewHeights) 
+     name:NSWindowDidResizeNotification object:self.window];
     
     [[BHTextView sharedActions] setLinkAction:^(NSString *text){
         NSLog(@"link: %@", text);
@@ -30,7 +45,12 @@
         NSLog(@"user: %@", text);
     }];         
     
-    [birdhouse requestPublicTimelineWithSuccess:^(NSArray *tweets){
+    _birdhouse = [BirdHouseKit kitWithConsumerKey:nil andConsumerSecret:nil];    
+    [self refreshSteam:self];
+}
+
+- (IBAction)refreshSteam:(id)sender{
+    [_birdhouse requestPublicTimelineWithSuccess:^(NSArray *tweets){
         if(tweets != nil){
             _tweets = tweets;
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -39,7 +59,7 @@
         }        
     } andFailure:^(NSError *error){
         NSLog(@"%@", error);
-    }];     
+    }];    
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
@@ -50,9 +70,9 @@
     CGFloat width = NSWidth(tableView.frame);
     BHTweet *tweet = [_tweets objectAtIndex:row];
     NSRect textRect = [tweet.styledText
-                       boundingRectWithSize:NSMakeSize(width, 0.0f) 
+                       boundingRectWithSize:NSMakeSize(width-40.0f, 0.0f) 
                        options:NSStringDrawingUsesLineFragmentOrigin];    
-    return NSHeight(textRect)+35.0f;
+    return NSHeight(textRect)+40.0f;
 }
 
 - (BMTableCellView *)tableView:(NSTableView *)tableView 
@@ -64,5 +84,8 @@
     return view;
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

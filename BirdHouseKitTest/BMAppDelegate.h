@@ -14,4 +14,6 @@
 @property (strong, nonatomic) IBOutlet NSWindow *window;
 @property (strong, nonatomic) IBOutlet NSTableView *tweetTable;
 
+- (IBAction)refreshSteam:(id)sender;
+
 @end
