@@ -104,10 +104,12 @@
 		}else if([attributes objectForKey:BHUserAttributeName] != nil){
             BHTextViewAction userAction = [[BHTextView sharedActions] userAction];
 			if(userAction)userAction([attributes objectForKey:BHUserAttributeName]);
-		}
+		}else{
+            [[self superview] mouseDown:theEvent];
+        }
 	}
 	
-	[super mouseDown:theEvent];
+//	[super mouseDown:theEvent];
 }
 
 //- (NSView *)hitTest:(NSPoint)aPoint{
