@@ -32,5 +32,6 @@ typedef void (^BHSuccess)(NSArray *tweets);
 typedef void (^BHFailure)(NSError *error);
 
 - (void)requestPublicTimelineWithSuccess:(BHSuccess)success andFailure:(BHFailure)failure;
-
+- (void)requestUser:(NSString *)user withSuccess:(void (^)(BHUser *user))success andFailure:(BHFailure)failure;
+- (void)requestSearch:(NSString *)search withSuccess:(BHSuccess)success andFailure:(BHFailure)failure;
 @end
