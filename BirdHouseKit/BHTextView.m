@@ -91,6 +91,7 @@
 }
 
 - (void)mouseDown:(NSEvent *)theEvent{
+    BOOL passThroughMouseDown = YES;
 	NSPoint point = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	NSInteger charIndex = [self characterIndexForInsertionAtPoint:point];
 	if(charIndex < [[self string] length]){
@@ -98,17 +99,21 @@
 		if([attributes objectForKey:BHLinkAttributeName] != nil){
             BHTextViewAction linkAction = [[BHTextView sharedActions] linkAction];
 			if(linkAction)linkAction([attributes objectForKey:BHLinkAttributeName]);
+            passThroughMouseDown = NO;
 		}else if([attributes objectForKey:BHHashAttributeName] != nil){
             BHTextViewAction hashAction = [[BHTextView sharedActions] hashAction];
 			if(hashAction)hashAction([attributes objectForKey:BHHashAttributeName]);
+            passThroughMouseDown = NO;
 		}else if([attributes objectForKey:BHUserAttributeName] != nil){
             BHTextViewAction userAction = [[BHTextView sharedActions] userAction];
 			if(userAction)userAction([attributes objectForKey:BHUserAttributeName]);
-		}else{
-            [[self superview] mouseDown:theEvent];
+            passThroughMouseDown = NO;
         }
 	}
-	
+	if(passThroughMouseDown){
+        [[self superview] mouseDown:theEvent];
+    }
+    
 //	[super mouseDown:theEvent];
 }
 
