@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "BHObject.h"
+#import "BHBlocks.h"
 
 @interface BHUser : BHObject
 
@@ -18,6 +19,11 @@
 
 + (id)userWithDictionary:(NSDictionary *)dictionary;
 
-- (void)requestAvatarWithBlock:(void (^)(NSImage *styledAvatar))block;
+typedef void (^BHUserAvatar)(NSImage *image);
+
+- (void)requestAvatarWithSuccess:(BHImageBlock)success andFailure:(BHFailureBlock)failure; // 48x48
+- (void)requestMiniAvatarWithSuccess:(BHImageBlock)success andFailure:(BHFailureBlock)failure; // 24x24
+- (void)requestBiggerAvatarWithSuccess:(BHImageBlock)success andFailure:(BHFailureBlock)failure; // 73x73
+- (void)requestOriginalAvatarWithSuccess:(BHImageBlock)success andFailure:(BHFailureBlock)failure; // original size
 
 @end

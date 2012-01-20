@@ -6,46 +6,12 @@
 //  Copyright (c) 2012 David Keegan. All rights reserved.
 //
 
-#import "BirdHouseKit.h"
-#import "AFJSONRequestOperation.h"
+#import "BirdHouseKit+Private.h"
 #import "NSDictionary+KGJSON.h"
-
-@interface BirdHouseKit()
-- (NSString *)stringWithURLEncoding:(NSString *)input;
-- (void)requestWithTwitterApiPath:(NSString *)path success:(BHSuccess)success failure:(BHFailure)failure;
-@end
 
 @implementation BirdHouseKit(Twitter)
 
-- (NSString *)stringWithURLEncoding:(NSString *)input{
-    CFStringRef escaped = 
-    CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                            (CFStringRef)input, NULL,
-                                            CFSTR("!*'();:@&=+$,/?%#[]"),
-                                            kCFStringEncodingUnicode);
-    return [(NSString *)escaped autorelease];
-}
-
-- (void)requestWithTwitterApiPath:(NSString *)path success:(BHSuccess)success failure:(BHFailure)failure{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com%@", path]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [[BHObject operationQueue] addOperation:
-     [AFJSONRequestOperation 
-      JSONRequestOperationWithRequest:request 
-      success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *json){
-          NSMutableArray *tweets = [NSMutableArray arrayWithCapacity:[json count]];
-          @autoreleasepool{
-              for(NSDictionary *dictionary in json){
-                  [tweets addObject:[BHTweet tweetWithDictionary:dictionary]];
-              }
-          }
-          if(success)success([NSArray arrayWithArray:tweets]);
-      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
-          if(failure)failure(error);
-      }]];
-}
-
-- (void)requestPublicTimelineWithSuccess:(BHSuccess)success andFailure:(BHFailure)failure{
+- (void)requestPublicTimelineWithSuccess:(BHTweetsBlock)success andFailure:(BHFailureBlock)failure{
     [self requestWithTwitterApiPath:@"/1/statuses/public_timeline.json" success:^(NSArray *tweets){
         if(success)success(tweets);
     } failure:^(NSError *error){
@@ -53,8 +19,8 @@
     }];
 }
 
-- (void)requestSearch:(NSString *)search withSuccess:(BHSuccess)success andFailure:(BHFailure)failure{
-    search = [self stringWithURLEncoding:search];
+- (void)requestSearch:(NSString *)search withSuccess:(BHTweetsBlock)success andFailure:(BHFailureBlock)failure{
+    search = [[self class] stringWithURLEncoding:search];
     NSString *urlString = [NSString stringWithFormat:@"http://search.twitter.com/search.json?q=%@", search];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     [[BHObject operationQueue] addOperation:
@@ -74,16 +40,46 @@
       }]];
 }
 
-- (void)requestUser:(NSString *)user withSuccess:(void (^)(BHUser *user))success andFailure:(BHFailure)failure{
-    user = [self stringWithURLEncoding:user];
-    NSString *path = [NSString stringWithFormat:@"/1/users/show.json?screen_name=%@", user];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com%@", path]];
+- (void)requestUser:(NSString *)user withSuccess:(void (^)(BHUser *user))success andFailure:(BHFailureBlock)failure{
+    NSURL *url = [[self class] twitterAPIURLWithPath:@"/1/users/show.json" 
+                                        andArguments:[NSDictionary dictionaryWithObject:user 
+                                                                                 forKey:@"screen_name"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [[BHObject operationQueue] addOperation:
      [AFJSONRequestOperation 
       JSONRequestOperationWithRequest:request 
       success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSDictionary *json){
           if(success)success([BHUser userWithDictionary:json]);
+      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
+          if(failure)failure(error);
+      }]];
+}
+
+#pragma private
+
++ (NSURL *)twitterAPIURLWithPath:(NSString *)path{
+    return [[self class] twitterAPIURLWithPath:path andArguments:nil];
+}
+
++ (NSURL *)twitterAPIURLWithPath:(NSString *)path andArguments:(NSDictionary *)arguments{
+    NSString *encodedArguments = [[self class] urlEncodedArguments:arguments];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com%@?%@", path, encodedArguments]];
+}
+
+- (void)requestWithTwitterApiPath:(NSString *)path success:(BHTweetsBlock)success failure:(BHFailureBlock)failure{
+    NSURL *url = [[self class] twitterAPIURLWithPath:path];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [[BHObject operationQueue] addOperation:
+     [AFJSONRequestOperation 
+      JSONRequestOperationWithRequest:request 
+      success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSArray *json){
+          NSMutableArray *tweets = [NSMutableArray arrayWithCapacity:[json count]];
+          @autoreleasepool{
+              for(NSDictionary *dictionary in json){
+                  [tweets addObject:[BHTweet tweetWithDictionary:dictionary]];
+              }
+          }
+          if(success)success([NSArray arrayWithArray:tweets]);
       } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON){
           if(failure)failure(error);
       }]];

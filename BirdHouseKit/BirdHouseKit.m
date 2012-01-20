@@ -8,6 +8,7 @@
 
 #import "BirdHouseKit.h"
 #import "AFOAuth1Client.h"
+#import "AFImageRequestOperation.h"
 
 @implementation BirdHouseKit{
     NSString *_consumerKey;
@@ -58,6 +59,46 @@
     [_consumerKey release];
     [_consumerSecret release];    
     [super dealloc];
+}
+
+#pragma private
+
++ (NSString *)stringWithURLEncoding:(NSString *)input{
+    CFStringRef escaped = 
+    CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                            (CFStringRef)input, NULL,
+                                            CFSTR("!*'();:@&=+$,/?%#[]"),
+                                            kCFStringEncodingUnicode);
+    return [(NSString *)escaped autorelease];
+}
+
++ (NSString *)urlEncodedArguments:(NSDictionary *)arguments{
+    NSMutableArray *argsAndValues = [[NSMutableArray alloc] init];
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    for(NSString *key in [arguments allKeys]){
+        NSString *escapedKey = [[self class] stringWithURLEncoding:key];
+        NSString *value = [[self class] stringWithURLEncoding:[arguments objectForKey:key]];
+        [argsAndValues addObject:[NSString stringWithFormat:@"%@=%@", escapedKey, value]];
+    }
+    [pool drain];
+    
+    NSString *argsAndValuesString = [argsAndValues componentsJoinedByString:@"&"];
+    [argsAndValues release];
+    
+    return argsAndValuesString;
+}
+
++ (void)requestImageWithURL:(NSURL *)url success:(BHImageBlock)success andFailure:(BHFailureBlock)failure{
+    [[BHObject operationQueue] addOperation:
+     [AFImageRequestOperation 
+      imageRequestOperationWithRequest:[NSURLRequest requestWithURL:url]
+      imageProcessingBlock:nil cacheName: nil
+      success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSImage *image){
+          if(success)success(image);
+      } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
+          if(failure)failure(error);
+      }]];
 }
 
 @end

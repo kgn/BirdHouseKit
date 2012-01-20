@@ -11,6 +11,7 @@
 #import "BHTweet.h"
 #import "BHStyle.h"
 #import "BHTextView.h"
+#import "BHBlocks.h"
 
 @interface BirdHouseKit : NSObject
 
@@ -28,10 +29,7 @@
 
 @interface BirdHouseKit(Twitter)
 
-typedef void (^BHSuccess)(NSArray *tweets);
-typedef void (^BHFailure)(NSError *error);
-
-- (void)requestPublicTimelineWithSuccess:(BHSuccess)success andFailure:(BHFailure)failure;
-- (void)requestUser:(NSString *)user withSuccess:(void (^)(BHUser *user))success andFailure:(BHFailure)failure;
-- (void)requestSearch:(NSString *)search withSuccess:(BHSuccess)success andFailure:(BHFailure)failure;
+- (void)requestPublicTimelineWithSuccess:(BHTweetsBlock)success andFailure:(BHFailureBlock)failure;
+- (void)requestUser:(NSString *)user withSuccess:(void (^)(BHUser *user))success andFailure:(BHFailureBlock)failure;
+- (void)requestSearch:(NSString *)search withSuccess:(BHTweetsBlock)success andFailure:(BHFailureBlock)failure;
 @end

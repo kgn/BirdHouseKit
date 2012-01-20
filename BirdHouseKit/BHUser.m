@@ -51,7 +51,11 @@
 
 #import "BHUser.h"
 #import "NSDictionary+KGJSON.h"
-#import "AFImageRequestOperation.h"
+#import "BirdHouseKit+Private.h"
+
+@interface BHUser()
+- (NSURL *)avatarURLForSize:(NSString *)size;
+@end
 
 @implementation BHUser
 
@@ -62,18 +66,6 @@
 
 + (id)userWithDictionary:(NSDictionary *)dictionary{
     return [[[[self class] alloc] initWithDictionary:dictionary] autorelease];
-}
-
-- (void)requestAvatarWithBlock:(void (^)(NSImage *styledAvatar))block{
-    [[BHObject operationQueue] addOperation:
-    [AFImageRequestOperation 
-     imageRequestOperationWithRequest:[NSURLRequest requestWithURL:self.profileImageUrl]
-     imageProcessingBlock:nil cacheName: nil
-     success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSImage *image){
-         block(image);
-     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-         block(nil);
-     }]];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
@@ -97,6 +89,30 @@
     [_screenName release];
     [_profileImageUrl release];
     [super dealloc];
+}
+
+#pragma avatar
+
+- (NSURL *)avatarURLForSize:(NSString *)size{
+    NSDictionary *arguments = [[[NSDictionary alloc] initWithObjectsAndKeys:
+                                self.screenName, @"screen_name", size, @"size",nil] autorelease];
+    return [BirdHouseKit twitterAPIURLWithPath:@"/1/users/profile_image" andArguments:arguments];
+}
+
+- (void)requestAvatarWithSuccess:(BHImageBlock)success andFailure:(BHFailureBlock)failure{
+    [BirdHouseKit requestImageWithURL:self.profileImageUrl success:success andFailure:failure];
+}
+
+- (void)requestMiniAvatarWithSuccess:(BHImageBlock)success andFailure:(BHFailureBlock)failure{
+    [BirdHouseKit requestImageWithURL:[self avatarURLForSize:@"mini"] success:success andFailure:failure];
+}
+
+- (void)requestBiggerAvatarWithSuccess:(BHImageBlock)success andFailure:(BHFailureBlock)failure{
+    [BirdHouseKit requestImageWithURL:[self avatarURLForSize:@"bigger"] success:success andFailure:failure];   
+}
+
+- (void)requestOriginalAvatarWithSuccess:(BHImageBlock)success andFailure:(BHFailureBlock)failure{
+    [BirdHouseKit requestImageWithURL:[self avatarURLForSize:@"original"] success:success andFailure:failure];
 }
 
 @end
