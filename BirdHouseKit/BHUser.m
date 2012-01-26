@@ -13,7 +13,7 @@
 //*    "created_at" = "Fri May 16 22:36:14 +0000 2008";
 //    "default_profile" = 0;
 //    "default_profile_image" = 0;
-//    description = "I make stuff.";
+//*    description = "I make stuff.";
 //    "favourites_count" = 0;
 //    "follow_request_sent" = "<null>";
 //    "followers_count" = 3986;
@@ -25,7 +25,7 @@
 //    "is_translator" = 0;
 //    lang = en;
 //    "listed_count" = 342;
-//    location = "Carlsbad, CA";
+//*    location = "Carlsbad, CA";
 //*    name = "Drew Wilson";
 //    notifications = "<null>";
 //-    "profile_background_color" = e6e9e4;
@@ -61,7 +61,9 @@
 
 @synthesize url = _url;
 @synthesize name = _name;
+@synthesize location = _location;
 @synthesize screenName = _screenName;
+@synthesize about = _about;
 @synthesize profileImageUrl = _profileImageUrl;
 
 + (id)userWithDictionary:(NSDictionary *)dictionary{
@@ -70,9 +72,11 @@
 
 - (id)initWithDictionary:(NSDictionary *)dictionary{
     if((self = [super initWithDictionary:dictionary])){
-        _name = [[dictionary stringSafelyFromKey:@"name"] copy];
-        _screenName = [[dictionary stringSafelyFromKey:@"screen_name"] copy];
         _url = [[dictionary URLSafelyFromKey:@"url"] retain];
+        _name = [[dictionary stringSafelyFromKey:@"name"] copy];
+        _about = [[dictionary stringSafelyFromKey:@"description"] copy];         
+        _location = [[dictionary stringSafelyFromKey:@"location"] copy];
+        _screenName = [[dictionary stringSafelyFromKey:@"screen_name"] copy];
         _profileImageUrl = [[dictionary URLSafelyFromKey:@"profile_image_url"] retain];
     }
     return self;
@@ -86,6 +90,8 @@
 - (void)dealloc{
     [_url release];
     [_name release];
+    [_about release];    
+    [_location release];
     [_screenName release];
     [_profileImageUrl release];
     [super dealloc];

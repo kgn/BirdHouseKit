@@ -14,6 +14,9 @@
 
 @property (nonatomic, readonly) NSURL *url;
 @property (nonatomic, readonly) NSString *name;
+// this is the property for description because description is reserved in objc for the object description
+@property (nonatomic, readonly) NSString *about;
+@property (nonatomic, readonly) NSString *location;
 @property (nonatomic, readonly) NSString *screenName;
 @property (nonatomic, readonly) NSURL *profileImageUrl;
 
